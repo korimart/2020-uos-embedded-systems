@@ -35,10 +35,10 @@ def training_loop(n_epochs, optimizer, model, loss_fn, train_t_u, train_t_c, val
 trX,trY = get_training_data()
 teX,teY = get_test_data()
 
-trX = torch.tensor(trX)
-trY = torch.tensor(trY)
-teX = torch.tensor(teX)
-teY = torch.tensor(teY)
+trX = torch.FloatTensor(trX)
+trY = torch.FloatTensor(trY).unsqueeze(1)
+teX = torch.FloatTensor(teX)
+teY = torch.FloatTensor(teY).unsqueeze(1)
 
 print(np.shape(trX)[1])
 print(trX.shape)
@@ -61,17 +61,17 @@ training_loop(50, optimizer, model, nn.MSELoss(), trX, trY, trX, trY)
 Y_prediction = model(teX).detach().numpy()
 
 for i in range(1000):
-    label = teY[i]
-    pred = Y_prediction[i]
+    label = teY.numpy().flatten()[i]
+    pred = Y_prediction.flatten()[i]
     print("label:{:.2f}, pred:{:.2f}".format(label, pred))
 
 
 def get_direction(img):
     print(img.shape)
 #    img = np.array([np.reshape(img,img.shape**2)])
-    ret =  model(np.array([img])).detach().numpy()
+    ret = model(torch.FloatTensor(np.array([img])))
     return ret
 
 # Predict direction with single image
-dir=get_direction(teX[10])
+dir=get_direction(teX[10].numpy())
 print(dir[0][0])
