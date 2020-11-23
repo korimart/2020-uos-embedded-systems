@@ -3,8 +3,12 @@ __author__ = 'will'
 import pickle
 import numpy as np
 
+seed = 0
+np.random.seed(seed)
+
 data = pickle.load( open( "trainingdata.p", "rb" ), encoding="latin1" )
 n_images = len(data)
+np.random.shuffle(data)
 test, training = data[0:int(n_images/3)], data[int(n_images/3):]
 
 def get_training_data():

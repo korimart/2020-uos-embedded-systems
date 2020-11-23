@@ -43,10 +43,6 @@ teY = torch.FloatTensor(teY).unsqueeze(1)
 print(np.shape(trX)[1])
 print(trX.shape)
 
-seed = 0
-np.random.seed(seed)
-torch.random.manual_seed(seed)
-
 model = nn.Sequential(
     nn.Linear(np.shape(trX)[1], 512),
     nn.ReLU(),
