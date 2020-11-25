@@ -1,5 +1,10 @@
-from controller.Window import Window 
+import EasyPygame
+
+# this is necessary to register the scene to EasyPyGame
+import controller.MainScene
 
 if __name__ == "__main__":
-    window = Window(600, 600, "simMain")
-    window.run()
+    EasyPygame.initWindow(500, 500, "Sample", 75)
+    EasyPygame.loadScene("MainScene")
+    EasyPygame.switchScene("MainScene")
+    EasyPygame.run()
