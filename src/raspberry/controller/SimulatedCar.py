@@ -1,3 +1,4 @@
+import math
 from EasyPygame.Components.GameObject import GameObject
 
 class SimulatedCar():
@@ -8,7 +9,30 @@ class SimulatedCar():
         self.width = width
 
     def update(self, ms):
-        pass
+        leftDist = self.leftSpeed * ms / 1000
+        rightDist = self.rightSpeed * ms / 1000
+
+        if math.isclose(leftDist, rightDist):
+            self.carGameObject.transform.translate(0, max(leftDist, rightDist), 0)
+        else:
+            outer = max(leftDist, rightDist)
+            inner = min(leftDist, rightDist)
+            theta = (inner - outer) / self.width
+
+            # distance to the x position of the axis of rotation
+            rotDist = outer / theta - self.width / 2
+            clockwise = leftDist > rightDist
+            if clockwise:
+                theta *= -1
+                rotDist *= -1
+
+            x, y, z = self.carGameObject.transform.getPosition()
+            self.carGameObject.transform.reset()
+
+            self.carGameObject.transform.translate(x, y, z)
+            self.carGameObject.transform.rotateRadian(theta)
+            self.carGameObject.transform.translate(rotDist, 0, 0)
+            
 
     def finish_iteration(self):
         print('finish iteration')
