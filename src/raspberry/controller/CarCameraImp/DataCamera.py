@@ -12,7 +12,7 @@ class DataCamera(CarCamera):
         self.data = dataLoader.getDataUnshuffled()
         self.count = 0
         cv2.namedWindow("Data View")
-        cv2.moveWindow("Data Window", 0, 0)
+        cv2.moveWindow("Data View", 0, 0)
 
     def getImage(self):
         """Streams images from storage.
