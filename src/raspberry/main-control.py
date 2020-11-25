@@ -12,6 +12,7 @@ from controller.CarCameraImp.DataCamera import DataCamera
 from neural.DataLoaderImp.GivenDataLoader import GivenDataLoader
 from neural.ModelImp.GivenModel import GivenModel
 
+
 class MainScene(Scene):
     def __init__(self):
         super().__init__()
@@ -28,11 +29,36 @@ class MainScene(Scene):
         self.carCam = DataCamera(GivenDataLoader("trainingdata.p"))
         self.car = SimulatedCar(self.carCam, self.carGameObject)
         # self.controller = KeyboardController(self.car)
-        self.controller = NeuralController(self.car, GivenModel())
+        model = GivenModel()
+        model.load("trained-model.p")
+        self.controller = NeuralController(self.car, model)
 
     def preRender(self, ms):
         self.controller.update(ms)
         self.car.update(ms)
+
+        screenMoveSpeed = 0.01 * ms
+
+        if EasyPygame.isDown("]"):
+            self.camera.setDistanceDelta(screenMoveSpeed)
+
+        if EasyPygame.isDown("["):
+            self.camera.setDistanceDelta(-screenMoveSpeed)
+            
+        if EasyPygame.isDown1stTime("'"):
+            self.camera.setDistance(self.camera.DEFAULTDIST)
+
+        if EasyPygame.isDown("w"):
+            self.camera.move((0, screenMoveSpeed))
+
+        if EasyPygame.isDown("a"):
+            self.camera.move((-screenMoveSpeed, 0))
+
+        if EasyPygame.isDown("s"):
+            self.camera.move((0, -screenMoveSpeed))
+
+        if EasyPygame.isDown("d"):
+            self.camera.move((screenMoveSpeed, 0))
 
 
 if __name__ == "__main__":

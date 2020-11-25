@@ -9,6 +9,9 @@ class NeuralController(Controller):
 
     def update(self, ms):
         img = self.car.get_image_from_camera()
+        if img is None:
+            return
+
         direction = self.model.predict(img)
 
         # calculate left and right wheel speed with direction
