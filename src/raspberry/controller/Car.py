@@ -1,6 +1,7 @@
+from abc import ABC
 from .CarCamera import CarCamera
 
-class Car:
+class Car(ABC):
     def __init__(self, carCamera):
         self.carCamera : CarCamera = carCamera
 

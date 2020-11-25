@@ -4,7 +4,7 @@ from ..Car import Car
 
 class SimulatedCar(Car):
     def __init__(self, carCamera, carGameObject, width=1):
-        super().__init__(self, carCamera)
+        super().__init__(carCamera)
 
         self.carGameObject : GameObject = carGameObject
         self.leftSpeed = 0

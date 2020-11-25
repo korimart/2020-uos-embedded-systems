@@ -1,4 +1,6 @@
-class Controller:
+from abc import ABC
+
+class Controller(ABC):
     """Controls the car. Use KeyboardController to control the car
     with keyboard.
     """
