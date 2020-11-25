@@ -1,8 +1,8 @@
-from controller.KeyboardDriver import KeyboardDriver
+from .KeyboadController import KeyboardController
 import EasyPygame
 from EasyPygame.Components import *
 from OpenGL.GL import *
-from .KeyboardDriver import KeyboardDriver
+from .KeyboadController import KeyboardController
 from .SimulatedCar import SimulatedCar
 
 class MainScene(Scene):
@@ -12,13 +12,11 @@ class MainScene(Scene):
         self.carSim = None
         self.driver = None
 
-        self.angle = 90
-
     def onLoad(self):
         self.carGameObject = GameObject(self, "Car")
         self.carGameObject.renderComp = DefaultRenderComponent(color=(1, 1, 1))
         self.carSim = SimulatedCar(self.carGameObject)
-        self.driver = KeyboardDriver(self.carSim)
+        self.driver = KeyboardController(self.carSim)
 
     def preRender(self, ms):
         self.driver.update(ms)

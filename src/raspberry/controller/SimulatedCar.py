@@ -1,6 +1,5 @@
 import math
 from EasyPygame.Components.GameObject import GameObject
-import glm
 
 class SimulatedCar():
     def __init__(self, carGameObject, width=1):
@@ -35,15 +34,13 @@ class SimulatedCar():
         self.carGameObject.transform.translate(rotDist, 0, 0)
         
     def finish_iteration(self):
-        print('finish iteration')
+        raise NotImplementedError()
 
     def set_right_speed(self, speed):
-        print('set right speed to ', speed)
         self.rightSpeed = speed
     
     def set_left_speed(self, speed):
-        print('set left speed to ', speed)
         self.leftSpeed = speed
         
     def get_image_from_camera(self):
-        pass
+        raise NotImplementedError()
