@@ -5,6 +5,7 @@ from ..DataLoader import DataLoader
 
 class GivenDataLoader(DataLoader):
     '''
+    A DataLoader that loads the data given in the lecture.
     Data is stored as a numpy array in a picke as follows.
 
     +-----------+----------+-------------------+

@@ -6,6 +6,8 @@ from ..Model import Model
 
 
 class GivenModel(Model):
+    """Represents the model given in the lecture."""
+
     def __init__(self) -> None:
         self.model = nn.Sequential(
             nn.Linear(256, 512),
