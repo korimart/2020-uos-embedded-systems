@@ -21,17 +21,12 @@ class MainScene(Scene):
         self.controller: Controller = None
         self.carCam: CarCamera = None
 
-    def onLoad(self):
+    def _requestDependencies(self, dependencyProvider):
         self.carGameObject = GameObject(self, "Car")
-        self.carGameObject.renderComp = DefaultRenderComponent(color=(1, 1, 1))
+        self.car, self.carCam, self.controller = dependencyProvider(self.carGameObject)
 
-        # inject dependencies
-        self.carCam = DataCamera(GivenDataLoader("trainingdata.p"))
-        self.car = SimulatedCar(self.carCam, self.carGameObject)
-        # self.controller = KeyboardController(self.car)
-        model = GivenModel()
-        model.load("trained-model.p")
-        self.controller = NeuralController(self.car, model)
+    def onLoad(self):
+        self.carGameObject.renderComp = DefaultRenderComponent(color=(1, 1, 1))
 
     def preRender(self, ms):
         self.controller.update(ms)
@@ -44,7 +39,7 @@ class MainScene(Scene):
 
         if EasyPygame.isDown("["):
             self.camera.setDistanceDelta(-screenMoveSpeed)
-            
+
         if EasyPygame.isDown1stTime("'"):
             self.camera.setDistance(self.camera.DEFAULTDIST)
 
@@ -61,8 +56,21 @@ class MainScene(Scene):
             self.camera.move((screenMoveSpeed, 0))
 
 
+def dependencyProvider(carGameObject):
+    model = GivenModel()
+    model.load("trained-model.p")
+
+    carCam = DataCamera(GivenDataLoader("trainingdata.p"))
+    car = SimulatedCar(carCam, carGameObject)
+    # self.controller = KeyboardController(self.car)
+    controller = NeuralController(car, model)
+
+    return car, carCam, controller
+
+
 if __name__ == "__main__":
     EasyPygame.initWindow(500, 500, "Controller Window", 60)
+    EasyPygame.nextSceneOnInit("MainScene", "_requestDependencies", (dependencyProvider, ))
     EasyPygame.loadScene("MainScene")
     EasyPygame.switchScene("MainScene")
     EasyPygame.run()
