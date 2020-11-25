@@ -1,0 +1,3 @@
+[submodule "src/raspberry/-b"]
+	path = src/raspberry/-b
+	url = https://github.com/korimart/EasyPyGame.git
