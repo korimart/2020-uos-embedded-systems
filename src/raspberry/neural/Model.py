@@ -57,14 +57,15 @@ class Model(ABC):
 
         Returns
         -------
-        float
+        NumpyArray
+            -- A numpy array of output data.
         """
 
         with torch.no_grad():
             X = torch.tensor(X)
             Y = self.model(X)
 
-        return Y.numpy()[0]
+        return Y.numpy()
 
     def save(self, path):
         torch.save(self.model.state_dict(), path)

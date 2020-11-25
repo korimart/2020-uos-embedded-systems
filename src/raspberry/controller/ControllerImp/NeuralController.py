@@ -12,7 +12,7 @@ class NeuralController(Controller):
         if img is None:
             return
 
-        direction = self.model.predict(img)
+        direction = self.model.predict(img)[0]
 
         # calculate left and right wheel speed with direction
         if direction < -1.0:
