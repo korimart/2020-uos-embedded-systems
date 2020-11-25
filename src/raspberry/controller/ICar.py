@@ -1,0 +1,2 @@
+class ICar:
+    pass

@@ -1,23 +1,28 @@
-from .KeyboadController import KeyboardController
-import EasyPygame
 from EasyPygame.Components import *
 from OpenGL.GL import *
-from .KeyboadController import KeyboardController
-from .SimulatedCar import SimulatedCar
+
+from .ICar import ICar
+from .IController import IController
+
+# import dependencies
+from .CarImp.SimulatedCar import SimulatedCar
+from .ControllerImp.KeyboadController import KeyboardController
 
 class MainScene(Scene):
     def __init__(self):
         super().__init__()
         self.carGameObject = None
-        self.carSim = None
-        self.driver = None
+        self.car : ICar = None
+        self.controller : IController = None
 
     def onLoad(self):
         self.carGameObject = GameObject(self, "Car")
         self.carGameObject.renderComp = DefaultRenderComponent(color=(1, 1, 1))
-        self.carSim = SimulatedCar(self.carGameObject)
-        self.driver = KeyboardController(self.carSim)
+
+        # inject dependencies
+        self.car = SimulatedCar(self.carGameObject)
+        self.controller = KeyboardController(self.car)
 
     def preRender(self, ms):
-        self.driver.update(ms)
-        self.carSim.update(ms)
+        self.controller.update(ms)
+        self.car.update(ms)
