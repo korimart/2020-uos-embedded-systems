@@ -36,7 +36,7 @@ def keyboardSimulation(carGameObject: GameObject):
     return car, controller
 
 
-def givenDataReal(carGameObject: GameObject):
+def realDataRealCar(carGameObject: GameObject):
     """A DependencyProvider that actually runs a car with
     the model given in the lecture."""
 
