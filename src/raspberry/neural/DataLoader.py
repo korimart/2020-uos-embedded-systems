@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 import cv2
 
-class OriginalDataLoader:
+class GivenDataLoader:
     '''
     Data is stored as a numpy array in a picke as follows.
     +-----------+----------+-------------------+

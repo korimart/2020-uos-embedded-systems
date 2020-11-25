@@ -3,8 +3,8 @@ from neural import Model
 
 if __name__ == "__main__":
     # dependencies
-    dataLoader = DataLoader.OriginalDataLoader("trainingdata.p")
-    model = Model.OriginalModel()
+    dataLoader = DataLoader.GivenDataLoader("trainingdata.p")
+    model = Model.GivenModel()
 
     # start of logic
     trainX, trainY = dataLoader.getTrainingData()

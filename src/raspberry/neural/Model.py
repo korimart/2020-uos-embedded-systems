@@ -75,7 +75,7 @@ class Model:
         self.model.load_state_dict(torch.load(path))
 
 
-class OriginalModel(Model):
+class GivenModel(Model):
     def __init__(self) -> None:
         self.model = nn.Sequential(
             nn.Linear(256, 512),
