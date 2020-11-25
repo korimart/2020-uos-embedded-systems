@@ -1,6 +1,5 @@
 import cv2
 import numpy as np
-import numpy
 
 from ..CarCamera import CarCamera
 from neural.DataLoader import DataLoader

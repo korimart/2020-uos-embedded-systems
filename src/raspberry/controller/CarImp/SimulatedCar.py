@@ -1,9 +1,11 @@
 import math
+import EasyPygame
 from EasyPygame.Components.GameObject import GameObject
+from EasyPygame.Components.GUI import Text
 from ..Car import Car
 
 class SimulatedCar(Car):
-    def __init__(self, carCamera, carGameObject, width=1):
+    def __init__(self, carCamera, carGameObject, width=2):
         super().__init__(carCamera)
 
         self.carGameObject : GameObject = carGameObject
@@ -11,6 +13,11 @@ class SimulatedCar(Car):
         self.rightSpeed = 0
         self.width = width
         self.faceAngle = 0
+
+        # self.text = Text(self.carGameObject.scene, color=(1, 1, 1))
+        # self.text2 = Text(self.carGameObject.scene, color=(1, 1, 1))
+        # self.text.transform.translate(-5.5, 5, -3)
+        # self.text2.transform.translate(-5.5, 4, -3)
 
     def update(self, ms):
         leftDist = self.leftSpeed * ms / 1000
@@ -41,6 +48,14 @@ class SimulatedCar(Car):
 
     def set_right_speed(self, speed):
         self.rightSpeed = speed
+        # self._printSpeeds()
     
     def set_left_speed(self, speed):
         self.leftSpeed = speed
+        # self._printSpeeds()
+
+    # def _printSpeeds(self):
+    #     text = "right: {0:.4f}".format(self.rightSpeed)
+    #     text2 = "left: {0:.4f}".format(self.leftSpeed)
+    #     self.text.setText(text)
+    #     self.text2.setText(text2)
