@@ -1,8 +1,11 @@
 import math
 from EasyPygame.Components.GameObject import GameObject
+from ..Car import Car
 
-class SimulatedCar():
-    def __init__(self, carGameObject, width=1):
+class SimulatedCar(Car):
+    def __init__(self, carCamera, carGameObject, width=1):
+        super().__init__(self, carCamera)
+
         self.carGameObject : GameObject = carGameObject
         self.leftSpeed = 0
         self.rightSpeed = 0
@@ -41,6 +44,3 @@ class SimulatedCar():
     
     def set_left_speed(self, speed):
         self.leftSpeed = speed
-        
-    def get_image_from_camera(self):
-        raise NotImplementedError()

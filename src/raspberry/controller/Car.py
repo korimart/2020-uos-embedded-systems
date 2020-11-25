@@ -1,4 +1,9 @@
+from .CarCamera import CarCamera
+
 class Car:
+    def __init__(self, carCamera):
+        self.carCamera : CarCamera = carCamera
+
     def update(self, ms):
         pass
 
@@ -12,5 +17,4 @@ class Car:
         pass
         
     def get_image_from_camera(self):
-        pass
-    
+        return self.carCamera.getImage()

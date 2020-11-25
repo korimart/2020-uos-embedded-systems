@@ -3,21 +3,25 @@ from ..Car import Car
 from neural.Model import Model
 
 class NeuralController(Controller):
-    def __init__(self, car, model, camera) -> None:
-        self.car : Car = car
-        self.model : Model = model
-        self.camera = camera
+    def __init__(self, car, model) -> None:
+        self.car: Car = car
+        self.model: Model = model
 
     def update(self, ms):
-        img = self.camera.getIamge()
+        img = self.car.get_image_from_camera()
         direction = self.model.predict(img)[0]
-        speed = 1
 
-        if direction > 0:
-            self.car.set_left_speed(speed)
-        elif direction < 0:
-            self.car.set_right_speed(speed)
+        # calculate left and right wheel speed with direction
+        if direction < -1.0:
+            direction = -1.0
+        if direction > 1.0:
+            direction = 1.0
+        if direction < 0.0:
+            left_speed = 1.0 + direction
+            right_speed = 1.0
         else:
-            self.car.set_left_speed(speed)
-            self.car.set_right_speed(speed)
-        
+            right_speed = 1.0 - direction
+            left_speed = 1.0
+
+        self.car.set_right_speed(right_speed)
+        self.car.set_left_speed(left_speed)
