@@ -1,3 +1,4 @@
-[submodule "src/raspberry/-b"]
-	path = src/raspberry/-b
+[submodule "src/raspberry/EasyPyGame"]
+	path = src/raspberry/EasyPyGame
 	url = https://github.com/korimart/EasyPyGame.git
+	branch = export
