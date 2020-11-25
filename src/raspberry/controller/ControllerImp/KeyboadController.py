@@ -1,9 +1,9 @@
-from ..ICar import ICar
+from ..Car import Car
 import EasyPygame
 
 class KeyboardController:
     def __init__(self, car) -> None:
-        self.car : ICar = car
+        self.car : Car = car
         self.leftRolling = False
         self.rightRolling = False
 

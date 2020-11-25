@@ -1,8 +1,8 @@
 from EasyPygame.Components import *
 from OpenGL.GL import *
 
-from .ICar import ICar
-from .IController import IController
+from .Car import ICar
+from .Controller import IController
 
 # import dependencies
 from .CarImp.SimulatedCar import SimulatedCar

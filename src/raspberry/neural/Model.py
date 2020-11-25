@@ -49,6 +49,19 @@ class Model:
         training_loop(epoch, self.optimizer, self.model, self.lossFunc, trainX, trainY, valiX, valiY)
 
     def predict(self, X):
+        """Predicts the label with this model.
+
+        Parameters
+        ----------
+        X : NumpyArray
+            -- A numpy array of input data.
+
+        Returns
+        -------
+        NumpyArray
+            -- A numpy array of output data.
+        """
+
         with torch.no_grad():
             X = torch.tensor(X)
             Y = self.model(X)
