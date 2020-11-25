@@ -26,3 +26,11 @@ pip install pyopengl pyopengl_accelerate
 cd src/raspberry
 python main-control.py
 ```
+
+## 조작법
+
+```
+wasd - 카메라 상하좌우 이동
+[] - 카메라 앞뒤로 이동
+```
+
