@@ -1,6 +1,5 @@
+from abc import ABC
 import torch
-import torch.nn as nn
-import torch.optim as optim
 
 def training_loop(n_epochs, optimizer, model, lossFunc, trainX, trainY, valiX, valiY):
     log = []
@@ -28,7 +27,7 @@ def training_loop(n_epochs, optimizer, model, lossFunc, trainX, trainY, valiX, v
     return "\n".join(log[-10:])
 
 
-class Model:
+class Model(ABC):
     '''
     Class that hides deep learning libraries from users so the users do
     not need to deal with converting numpy data to the specific objects
@@ -58,8 +57,7 @@ class Model:
 
         Returns
         -------
-        NumpyArray
-            -- A numpy array of output data.
+        float
         """
 
         with torch.no_grad():
@@ -73,16 +71,3 @@ class Model:
 
     def load(self, path):
         self.model.load_state_dict(torch.load(path))
-
-
-class GivenModel(Model):
-    def __init__(self) -> None:
-        self.model = nn.Sequential(
-            nn.Linear(256, 512),
-            nn.ReLU(),
-            nn.Linear(512, 64),
-            nn.ReLU(),
-            nn.Linear(64, 1))
-
-        self.optimizer = optim.Adam(self.model.parameters())
-        self.lossFunc = nn.MSELoss()

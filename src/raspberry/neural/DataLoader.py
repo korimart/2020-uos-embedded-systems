@@ -1,55 +1,43 @@
-import pickle
-import numpy as np
-import cv2
+from abc import ABC
+from typing import Tuple
 
-class GivenDataLoader:
-    '''
-    Data is stored as a numpy array in a picke as follows.
-    +-----------+----------+-------------------+
-    |     0     |    1     |         2         |
-    +-----------+----------+-------------------+
-    | Direction | Velocity | 16x16 Numpy Array |
-    +-----------+----------+-------------------+
-    The numpy array at index 2 contains uint8 grayscales of each pixel.
-    '''
 
-    def __init__(self, path, seed=0) -> None:
-        np.random.seed(seed)
+class DataLoader(ABC):
+    def getTrainingData(self) -> Tuple:
+        """Gets the training data set.
 
-        # original data
-        self.data = pickle.load(open(path, "rb"), encoding="latin1")
+        Returns
+        -------
+        NumpyArray
+            -- A numpy array of numpy arrays of length 256 that represents 16x16 gray-scale pixels.
+        NumpyArray
+            -- A numpy array of lables.
+        """
 
-        # shuffled data
-        data = pickle.load( open( path, "rb" ), encoding="latin1" )
-        imageCount = len(data)
-        self.test, self.train = data[0:int(imageCount / 3)], data[int(imageCount / 3):]
+        pass
 
-    @staticmethod
-    def _separateDataLabel(loadedData):
-        X = np.array([np.reshape(serialized[2], serialized[2].shape[0] ** 2) for serialized in loadedData], dtype=np.float32)
-        Y = np.zeros((len(loadedData)), dtype=np.float32)
+    def getTestData(self) -> Tuple:
+        """Gets the test data set.
 
-        for i, data in enumerate(loadedData):
-            Y[i] = float(data[0])
+        Returns
+        -------
+        NumpyArray
+            -- A numpy array of numpy arrays of length 256 that represents 16x16 gray-scale pixels.
+        NumpyArray
+            -- A numpy array of lables.
+        """
 
-        return X, Y
-        
-    def getTrainingData(self):
-        return self._separateDataLabel(self.train)
+        pass
 
-    def getTestData(self):
-        return self._separateDataLabel(self.test)
+    def getDataUnshuffled(self) -> Tuple:
+        """Gets the original data set as it was loaded.
 
-    def showDataAsCv2Window(self):
-        cv2.namedWindow('Data View')
+        Returns
+        -------
+        NumpyArray
+            -- A numpy array of numpy arrays of length 256 that represents 16x16 gray-scale pixels.
+        NumpyArray
+            -- A numpy array of lables.
+        """
 
-        for i, direction, velocity, numpyArray in enumerate(self.data):
-            print("[{}] dir {} vel {}".format(i, direction, velocity))
-            cv2.imshow("Data View", np.array(cv2.resize(numpyArray,(280,280))))
-            cv2.waitKey(0)
-
-        cv2.destroyAllWindows()
-
-class OurDataLoader:
-    def __init__(self) -> None:
-        raise NotImplementedError()
+        pass
