@@ -23,9 +23,3 @@ class MainScene(Scene):
     def preRender(self, ms):
         self.driver.update(ms)
         self.carSim.update(ms)
-
-        if EasyPygame.isDown1stTime("KP5"):
-            self.angle += 90
-            self.carGameObject.transform.reset()
-            self.carGameObject.transform.rotate(self.angle)
-            self.carGameObject.transform.translate(1, 0, 0)
