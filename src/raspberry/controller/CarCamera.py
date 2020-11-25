@@ -1,5 +1,5 @@
 from abc import ABC
 
 class CarCamera(ABC):
-    def getImage():
+    def getImage(self):
         pass

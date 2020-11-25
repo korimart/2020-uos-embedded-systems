@@ -1,5 +1,34 @@
+# Copyright(c) Reserved 2020.
+# Donghee Lee, University of Soul
+#
+__author__ = "will"
+
+import serial
+
 from ..Car import Car
+
 
 class RealCar(Car):
     def __init__(self, carCamera):
         super().__init__(carCamera)
+
+        self.left_wheel = 0
+        self.right_wheel = 0
+        self.ser = serial.Serial("/dev/ttyUSB0", 9600)
+
+    def finish_iteration(self):
+        print("finish iteration")
+
+    def set_right_speed(self, speed):
+        print("set right speed to ", speed)
+        cmd = ("R%d\n" % speed).encode("ascii")
+        self.ser.write(cmd)
+
+    def set_left_speed(self, speed):
+        print("set left speed to ", speed)
+        cmd = ("L%d\n" % speed).encode("ascii")
+        print("My cmd is %s" % cmd)
+        self.ser.write(cmd)
+
+    def stop(self):  # robot stop
+        print("stop")
