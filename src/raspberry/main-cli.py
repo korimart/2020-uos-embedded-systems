@@ -17,7 +17,7 @@ def realDataRealCar():
     model.load("trained-model.p")
 
     # carCam = RealCamera()
-    carCam = DataCamera()
+    carCam = DataCamera(GivenDataLoader())
     car = RealCar(carCam)
     controller = NeuralController(car, model)
 
