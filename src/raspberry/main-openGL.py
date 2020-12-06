@@ -1,9 +1,6 @@
 from EasyPygame.Components.GameObject import GameObject
 from controller.MainScene import start
 
-# import dependencies
-# from controller.CarCameraImp.RealCamera import RealCamera
-# from controller.CarImp.RealCar import RealCar
 from controller.CarImp.SimulatedCar import SimulatedCar
 from controller.ControllerImp.KeyboadController import KeyboardController
 from controller.ControllerImp.NeuralController import NeuralController
@@ -32,19 +29,6 @@ def keyboardSimulation(carGameObject: GameObject):
 
     car = SimulatedCar(None, carGameObject)
     controller = KeyboardController(car)
-
-    return car, controller
-
-def realDataRealCar(carGameObject: GameObject): 
-    """A DependencyProvider that actually runs a car with
-    the model given in the lecture."""
-
-    model = GivenModel()
-    model.load("trained-model.p")
-
-    carCam = RealCamera()
-    car = RealCar(carCam)
-    controller = NeuralController(car, model)
 
     return car, controller
 

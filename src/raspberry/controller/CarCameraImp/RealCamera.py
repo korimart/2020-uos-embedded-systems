@@ -13,6 +13,8 @@ class RealCamera(CarCamera):
         self.camera.resolution = (320, 320)  # set camera resolution to (320, 320)
         self.camera.color_effects = (128, 128)  # set camera to black and white
 
+        self.memory = []
+
     def getImage(self):
         img = np.empty((320, 320, 3), dtype=np.uint8)
         self.camera.capture(img, "bgr")
@@ -34,4 +36,7 @@ class RealCamera(CarCamera):
         img2 = cv2.resize(img2, (16, 16), interpolation=cv2.INTER_AREA)
         #        cv2.imshow("Image", img2)
         #        cv2.waitKey(0)
+
+        self.memory.append(img2)
+
         return img2

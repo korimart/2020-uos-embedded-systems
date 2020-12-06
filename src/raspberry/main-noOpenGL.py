@@ -32,6 +32,8 @@ class Window:
                         self.controller.goRight()
                     if event.key == pygame.K_KP8:
                         self.controller.goStraight()
+                    if event.key == pygmae.K_KP5:
+                        self.controller.stop()
 
             ms = fpsClock.get_time()
             self.car.update(ms)
