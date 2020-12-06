@@ -11,7 +11,7 @@ class Window:
         self.displaySurface = pygame.display.set_mode((self.width, self.height), pygame.DOUBLEBUF | pygame.HWSURFACE)
         pygame.display.set_caption(self.caption)
 
-    def run(self, inputManager, sceneManager, renderer):
+    def run(self):
         fpsClock = pygame.time.Clock()
         while True:
             events = pygame.event.get()
@@ -21,17 +21,21 @@ class Window:
                     sys.exit()
 
                 elif event.type == pygame.KEYDOWN:
-                    inputManager.register(event.key)
+                    print(event.key)
 
                 elif event.type == pygame.KEYUP:
-                    inputManager.unregister(event.key)
+                    print(event.key)
 
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    inputManager.register(event.button)
+                    print(event.key)
 
                 elif event.type == pygame.MOUSEBUTTONUP:
-                    inputManager.unregister(event.button)
+                    print(event.key)
 
             ms = fpsClock.get_time()
             pygame.display.flip()
             fpsClock.tick(self.FPS)
+
+if __name__ == "__main__":
+    window = Window(500, 500, "hehe", FPS=60)
+    window.run()
