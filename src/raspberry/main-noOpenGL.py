@@ -26,9 +26,9 @@ class Window:
                     sys.exit()
 
                 elif event.type == pygame.KEYDOWN:
-                    if event.key == pygame.KP4:
+                    if event.key == pygame.K_KP4:
                         self.controller.onLeftDown()
-                    if event.key == pygame.KP6:
+                    if event.key == pygame.K_KP6:
                         self.controller.onRightDown()
 
             ms = fpsClock.get_time()
