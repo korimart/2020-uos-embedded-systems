@@ -14,7 +14,7 @@ class RealCar(Car):
 
         self.left_wheel = 0
         self.right_wheel = 0
-        self.ser = serial.Serial("/dev/ttyUSB0", 9600)
+        self.ser = serial.Serial("/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_75830333438351710240-if00", 9600)
 
     def finish_iteration(self):
         print("finish iteration")
