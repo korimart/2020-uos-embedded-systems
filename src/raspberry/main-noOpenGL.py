@@ -1,5 +1,7 @@
 import sys
 import pygame
+from controller.CarImp.RealCar import RealCar
+from controller.ControllerImp.KeyboadController import KeyboardController
 
 class Window:
     def __init__(self, width, height, caption, FPS=200):
@@ -11,6 +13,9 @@ class Window:
         self.displaySurface = pygame.display.set_mode((self.width, self.height), pygame.DOUBLEBUF | pygame.HWSURFACE)
         pygame.display.set_caption(self.caption)
 
+        self.car = RealCar(None)
+        self.controller = KeyboardController(self.car)
+
     def run(self):
         fpsClock = pygame.time.Clock()
         while True:
@@ -21,18 +26,14 @@ class Window:
                     sys.exit()
 
                 elif event.type == pygame.KEYDOWN:
-                    print(event.key)
-
-                elif event.type == pygame.KEYUP:
-                    print(event.key)
-
-                elif event.type == pygame.MOUSEBUTTONDOWN:
-                    print(event.key)
-
-                elif event.type == pygame.MOUSEBUTTONUP:
-                    print(event.key)
+                    if event.key == pygame.KP4:
+                        self.controller.onLeftDown()
+                    if event.key == pygame.KP6:
+                        self.controller.onRightDown()
 
             ms = fpsClock.get_time()
+            self.car.update(ms)
+
             pygame.display.flip()
             fpsClock.tick(self.FPS)
 
