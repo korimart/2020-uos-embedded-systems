@@ -20,18 +20,14 @@ class RealCar(Car):
         print("finish iteration")
 
     def set_right_speed(self, speed):
-        print("set right speed to ", speed)
         cmd = ("R%d\n" % speed).encode("ascii")
-        print("My cmd is %s" % cmd)
         self.ser.write(cmd)
-        # print("return was {}".format(self.ser.readline()))
+        print(self.left_wheel, self.right_wheel)
 
     def set_left_speed(self, speed):
-        print("set left speed to ", speed)
         cmd = ("L%d\n" % speed).encode("ascii")
-        print("My cmd is %s" % cmd)
         self.ser.write(cmd)
-        # print("return was {}".format(self.ser.readline()))
+        print(self.left_wheel, self.right_wheel)
 
     def stop(self):  # robot stop
         print("stop")
