@@ -57,10 +57,12 @@ class RealCar(Car):
         print("stop")
 
     def get_image_from_camera(self):
+        print("getting image")
         image = self.carCamera.getImage()
         self.memory.append([self.left_wheel, self.right_wheel, image])
         return image
 
     def save(self, path):
+        print("saving")
         toSave = np.array(self.memory)
         np.save(path, toSave)
