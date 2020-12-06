@@ -1,3 +1,4 @@
-import numpy as np
+from neural.DataLoaderImp.OurDataLoader import OurDataLoader
 
-a = np.empty(1)
+loader = OurDataLoader("out-data.npy")
+loader.showDataAsCv2Window()
