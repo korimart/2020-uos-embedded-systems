@@ -7,11 +7,11 @@ class KeyboardController:
         self.rightRolling = False
 
     def onLeftDown(self):
-        speed = 0 if self.leftRolling else 1
+        speed = 0 if self.leftRolling else 10
         self.leftRolling = not self.leftRolling
         self.car.set_right_speed(speed)
 
     def onRightDown(self):
-        speed = 0 if self.rightRolling else 1
+        speed = 0 if self.rightRolling else 10
         self.rightRolling = not self.rightRolling
         self.car.set_left_speed(speed)
