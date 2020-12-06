@@ -21,14 +21,14 @@ class RealCar(Car):
 
     def set_right_speed(self, speed):
         print("set right speed to ", speed)
-        cmd = ("R%d*" % speed).encode("ascii")
+        cmd = ("R%d\n" % speed).encode("ascii")
         print("My cmd is %s" % cmd)
         self.ser.write(cmd)
         print("return was {}".format(self.ser.readline()))
 
     def set_left_speed(self, speed):
         print("set left speed to ", speed)
-        cmd = ("L%d*" % speed).encode("ascii")
+        cmd = ("L%d\n" % speed).encode("ascii")
         print("My cmd is %s" % cmd)
         self.ser.write(cmd)
         print("return was {}".format(self.ser.readline()))
