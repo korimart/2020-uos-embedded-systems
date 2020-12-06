@@ -27,9 +27,11 @@ class Window:
 
                 elif event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_KP4:
-                        self.controller.onLeftDown()
+                        self.controller.goLeft()
                     if event.key == pygame.K_KP6:
-                        self.controller.onRightDown()
+                        self.controller.goRight()
+                    if event.key == pygame.K_KP8:
+                        self.controller.goStraight()
 
             ms = fpsClock.get_time()
             self.car.update(ms)
