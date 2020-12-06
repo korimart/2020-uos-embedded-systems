@@ -52,5 +52,5 @@ class Window:
             fpsClock.tick(self.FPS)
 
 if __name__ == "__main__":
-    window = Window(500, 500, "hehe", FPS=10)
+    window = Window(500, 500, "hehe", FPS=60)
     window.run()
