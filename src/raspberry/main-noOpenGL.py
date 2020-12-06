@@ -41,7 +41,7 @@ class Window:
                         self.car.cacheImage = True
                         print("started recording")
                     if event.key == pygame.K_c:
-                        self.memory = []
+                        self.car.memory = []
                         print("cleared memory")
 
             ms = fpsClock.get_time()
