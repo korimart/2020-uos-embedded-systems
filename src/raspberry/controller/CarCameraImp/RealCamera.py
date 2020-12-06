@@ -15,7 +15,7 @@ class RealCamera(CarCamera):
 
     def getImage(self):
         img = np.empty((320, 320, 3), dtype=np.uint8)
-        self.camera.capture(img, "bgr")
+        self.camera.capture(img, "bgr", use_video_port=True)
 
         img = img[
             :, :, 0
