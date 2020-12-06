@@ -2,6 +2,7 @@ import sys
 import pygame
 from controller.CarImp.RealCar import RealCar
 from controller.ControllerImp.KeyboadController import KeyboardController
+from controller.CarCameraImp.RealCamera import RealCamera
 
 class Window:
     def __init__(self, width, height, caption, FPS=200):
@@ -13,7 +14,7 @@ class Window:
         self.displaySurface = pygame.display.set_mode((self.width, self.height), pygame.DOUBLEBUF | pygame.HWSURFACE)
         pygame.display.set_caption(self.caption)
 
-        self.car = RealCar(None)
+        self.car = RealCar(RealCamera())
         self.controller = KeyboardController(self.car)
 
     def run(self):
@@ -34,6 +35,8 @@ class Window:
                         self.controller.goStraight()
                     if event.key == pygame.K_KP5:
                         self.controller.stop()
+                    if event.key == pygame.K_s:
+                        self.car.save("our-data")
 
             ms = fpsClock.get_time()
             self.car.update(ms)
