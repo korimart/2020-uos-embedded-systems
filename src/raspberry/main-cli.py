@@ -28,7 +28,7 @@ if __name__ == "__main__":
     car, controller = realDataRealCar()
 
     while True:
-        car.update(16)
-        controller.update(16)
-        sleep(0.016)
+        car.update(100)
+        controller.update(100)
+        sleep(0.1)
         

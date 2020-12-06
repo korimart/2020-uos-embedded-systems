@@ -26,5 +26,5 @@ class NeuralController(Controller):
             right_speed = 1.0 - direction
             left_speed = 1.0
 
-        self.car.set_right_speed(right_speed)
-        self.car.set_left_speed(left_speed)
+        self.car.set_right_speed(right_speed*10)
+        self.car.set_left_speed(left_speed*10)
