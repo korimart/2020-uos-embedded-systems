@@ -17,6 +17,7 @@ class RealCar(Car):
         self.right_wheel = 0
         self.ser = serial.Serial("/dev/serial/by-id/usb-Arduino__www.arduino.cc__0043_75830333438351710240-if00", 9600)
         self.memory = []
+        self.cacheImage = False
 
     def finish_iteration(self):
         print("finish iteration")
@@ -57,9 +58,12 @@ class RealCar(Car):
         print("stop")
 
     def get_image_from_camera(self):
-        print("getting image")
         image = self.carCamera.getImage()
-        self.memory.append([self.left_wheel, self.right_wheel, image])
+
+        if self.cacheImage:
+            print("getting image")
+            self.memory.append([self.left_wheel, self.right_wheel, image])
+
         return image
 
     def save(self, path):

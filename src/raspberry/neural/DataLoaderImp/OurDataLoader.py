@@ -10,12 +10,16 @@ class OurDataLoader(DataLoader):
         np.random.seed(seed)
 
         # original data
-        self.data = np.load(path)
+        self.data = np.load(path, allow_pickle=True)
 
     def showDataAsCv2Window(self):
         cv2.namedWindow('Data View')
 
-        for i, left, right, image in enumerate(self.data):
+        for i, data in enumerate(self.data):
+            left = data[0]
+            right = data[1]
+            image = data[2]
+
             print("[{}] {} {}".format(i, left, right))
             cv2.imshow("Data View", np.array(cv2.resize(image,(280,280))))
             cv2.waitKey(0)

@@ -37,6 +37,9 @@ class Window:
                         self.controller.stop()
                     if event.key == pygame.K_s:
                         self.car.save("our-data")
+                    if event.key == pygame.K_r:
+                        self.car.cacheImage = True
+                        print("started recording")
 
             ms = fpsClock.get_time()
             self.car.update(ms)
