@@ -6,9 +6,9 @@ class KeyboardController:
         self.leftRolling = False
         self.rightRolling = False
     
-    # TODO
     def update(self, ms):
-        pass
+        # TODO
+        self.car.get_image_from_camera()
 
     def goStraight(self):
         if not self.leftRolling:

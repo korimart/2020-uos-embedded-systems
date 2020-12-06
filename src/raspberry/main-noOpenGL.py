@@ -40,6 +40,7 @@ class Window:
 
             ms = fpsClock.get_time()
             self.car.update(ms)
+            self.controller.update(ms)
 
             pygame.display.flip()
             fpsClock.tick(self.FPS)
