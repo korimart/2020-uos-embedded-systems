@@ -13,10 +13,10 @@ class KeyboardController:
     def goStraight(self):
         if not self.leftRolling:
             self.leftRolling = True
-            self.car.set_left_speed(1)
+            self.car.set_left_speed(2)
         if not self.rightRolling:
             self.rightRolling = True
-            self.car.set_right_speed(1)
+            self.car.set_right_speed(2)
     
     def stop(self):
         self.leftRolling = False
