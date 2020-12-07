@@ -21,7 +21,7 @@ class NeuralController(Controller):
         img = np.array([np.reshape(img, img.shape[0] ** 2)], dtype=np.float32)
 
         self.elapsed = 0
-        pred = self.model.predict(img)
+        pred = self.model.predict(img[0])
         left = pred[0]
         right = pred[1]
         self.car.set_left_speed(left)
