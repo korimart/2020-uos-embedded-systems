@@ -1,4 +1,5 @@
 # import dependencies
+from neural.ModelImp.OurModel import OurModel
 from controller.CarCameraImp.RealCamera import RealCamera
 from controller.CarImp.RealCar import RealCar
 from controller.CarImp.SimulatedCar import SimulatedCar
@@ -27,7 +28,7 @@ def realDataRealCar():
     """A DependencyProvider that actually runs a car with
     the model given in the lecture."""
 
-    model = GivenModel()
+    model = OurModel()
     model.load("trained-model.p")
 
     carCam = RealCamera()
