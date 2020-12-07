@@ -1,6 +1,7 @@
 from ..Controller import Controller
 from ..Car import Car
 from neural.Model import Model
+import numpy as np
 
 class NeuralController(Controller):
     def __init__(self, car, model) -> None:
@@ -18,7 +19,7 @@ class NeuralController(Controller):
             return
 
         self.elapsed = 0
-
+        img = np.reshape(img, img.shape[0] ** 2)
         pred = self.model.predict(img)
         left = pred[0]
         right = pred[1]
