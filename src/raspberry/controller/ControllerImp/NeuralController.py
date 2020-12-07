@@ -6,25 +6,21 @@ class NeuralController(Controller):
     def __init__(self, car, model) -> None:
         self.car: Car = car
         self.model: Model = model
+        self.elapsed = 0
 
     def update(self, ms):
         img = self.car.get_image_from_camera()
         if img is None:
             return
 
-        direction = self.model.predict(img)[0]
+        self.elapsed += ms
+        if self.elapsed < 100:
+            return
 
-        # calculate left and right wheel speed with direction
-        if direction < -1.0:
-            direction = -1.0
-        if direction > 1.0:
-            direction = 1.0
-        if direction < 0.0:
-            left_speed = 1.0 + direction
-            right_speed = 1.0
-        else:
-            right_speed = 1.0 - direction
-            left_speed = 1.0
+        self.elapsed = 0
 
-        self.car.set_right_speed(right_speed*10)
-        self.car.set_left_speed(left_speed*10)
+        pred = self.model.predict(img)
+        left = pred[0]
+        right = pred[1]
+        self.car.set_left_speed(left)
+        self.car.set_right_speed(right)
