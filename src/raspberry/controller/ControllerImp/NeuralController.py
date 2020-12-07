@@ -22,6 +22,7 @@ class NeuralController(Controller):
 
         self.elapsed = 0
         pred = self.model.predict(img[0])
+        pred = np.around(pred)
         left = pred[0]
         right = pred[1]
         self.car.set_left_speed(left)
