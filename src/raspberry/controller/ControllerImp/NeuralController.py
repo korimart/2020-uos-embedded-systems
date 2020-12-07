@@ -18,7 +18,7 @@ class NeuralController(Controller):
         if self.elapsed < 100:
             return
 
-        img = np.reshape(img, img.shape[0] ** 2)
+        img = np.reshape(img, img.shape[0] ** 2, dtype=np.float32)
 
         self.elapsed = 0
         pred = self.model.predict(img)
