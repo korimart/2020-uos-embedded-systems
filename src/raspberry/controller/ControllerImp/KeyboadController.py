@@ -24,18 +24,18 @@ class KeyboardController:
         self.car.set_left_speed(0)
         self.car.set_right_speed(0)
 
-    def goLeft(self):
+    def goLeft(self, speed):
         self.leftRolling = False
         self.car.set_left_speed(0)
 
         if not self.rightRolling:
             self.rightRolling = True
-            self.car.set_right_speed(1)
+            self.car.set_right_speed(speed)
 
-    def goRight(self):
+    def goRight(self, speed):
         self.rightRolling = False
         self.car.set_right_speed(0)
 
         if not self.leftRolling:
             self.leftRolling = True
-            self.car.set_left_speed(1)
+            self.car.set_left_speed(speed)

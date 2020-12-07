@@ -27,19 +27,31 @@ class Window:
                     sys.exit()
 
                 elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_KP7:
+                        self.controller.goLeft(1)
+
                     if event.key == pygame.K_KP4:
-                        self.controller.goLeft()
+                        self.controller.goLeft(2)
+                        
+                    if event.key == pygame.K_KP9:
+                        self.controller.goRight(1)
+
                     if event.key == pygame.K_KP6:
-                        self.controller.goRight()
+                        self.controller.goRight(2)
+
                     if event.key == pygame.K_KP8:
                         self.controller.goStraight()
+
                     if event.key == pygame.K_KP5:
                         self.controller.stop()
+
                     if event.key == pygame.K_s:
                         self.car.save("our-data")
+
                     if event.key == pygame.K_r:
                         self.car.cacheImage = True
                         print("started recording")
+
                     if event.key == pygame.K_c:
                         self.car.memory = []
                         print("cleared memory")

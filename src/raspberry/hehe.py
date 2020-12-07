@@ -1,7 +1,8 @@
 from neural.DataLoaderImp.OurDataLoader import OurDataLoader
 
 loader = OurDataLoader("our-data.npy")
-X, Y = loader.getTrainingData()
+loader.showDataAsCv2Window()
+# X, Y = loader.getTrainingData()
 
-print(len(X))
-print(len(Y))
+# print(len(X))
+# print(len(Y))
