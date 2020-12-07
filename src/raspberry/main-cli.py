@@ -38,10 +38,10 @@ def realDataRealCar():
 
 if __name__ == "__main__":
 
-    car, controller = givenDataRealCar()
+    car, controller = realDataRealCar()
 
     while True:
-        car.update(100)
-        controller.update(100)
-        sleep(0.1)
+        car.update(32)
+        controller.update(32)
+        sleep(0.032)
         
