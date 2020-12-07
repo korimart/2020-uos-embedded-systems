@@ -25,5 +25,11 @@ class NeuralController(Controller):
         pred = np.around(pred)
         left = pred[0]
         right = pred[1]
+
+        left = max(0, left)
+        left = min(2, left)
+        right = max(0, right)
+        right = min(2, right)
+
         self.car.set_left_speed(left)
         self.car.set_right_speed(right)
