@@ -40,10 +40,11 @@ class Model(ABC):
         self.lossFunc = None
 
     def train(self, epoch, trainX, trainY, valiX, valiY):
+        # TODO: 
         trainX = torch.tensor(trainX)
-        trainY = torch.tensor(trainY).unsqueeze(1)
+        trainY = torch.tensor(trainY)
         valiX = torch.tensor(valiX)
-        valiY = torch.tensor(valiY).unsqueeze(1)
+        valiY = torch.tensor(valiY)
         
         training_loop(epoch, self.optimizer, self.model, self.lossFunc, trainX, trainY, valiX, valiY)
 
