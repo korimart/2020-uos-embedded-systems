@@ -18,8 +18,9 @@ class NeuralController(Controller):
         if self.elapsed < 100:
             return
 
-        self.elapsed = 0
         img = np.reshape(img, img.shape[0] ** 2)
+
+        self.elapsed = 0
         pred = self.model.predict(img)
         left = pred[0]
         right = pred[1]
