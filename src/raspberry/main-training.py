@@ -2,13 +2,17 @@ from neural import DataLoader
 from neural import Model
 
 # import dependencies
-from neural.DataLoaderImp.GivenDataLoader import GivenDataLoader
-from neural.ModelImp.GivenModel import GivenModel
+# from neural.DataLoaderImp.GivenDataLoader import GivenDataLoader
+# from neural.ModelImp.GivenModel import GivenModel
+from neural.ModelImp.OurModel import OurModel
+from neural.DataLoaderImp.OurDataLoader import OurDataLoader
 
 if __name__ == "__main__":
     # dependencies
-    dataLoader = GivenDataLoader("trainingdata.p")
-    model = GivenModel()
+    # dataLoader = GivenDataLoader("trainingdata.p")
+    # model = GivenModel()
+    model = OurModel()
+    dataLoader = OurDataLoader("our-data.npy")
 
     # start of logic
     trainX, trainY = dataLoader.getTrainingData()
