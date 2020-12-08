@@ -42,11 +42,12 @@ class Model(ABC):
     def train(self, epoch, trainX, trainY, valiX, valiY):
         # TODO: 
         trainX = torch.tensor(trainX)
-        trainY = torch.tensor(trainY)
+        # trainY = torch.tensor(trainY).type(torch.LongTensor)
+        trainY = torch.tensor(trainY).unsqueeze(1).type(torch.FloatTensor)
         valiX = torch.tensor(valiX)
-        valiY = torch.tensor(valiY)
+        valiY = torch.tensor(valiY).unsqueeze(1).type(torch.FloatTensor)
         
-        training_loop(epoch, self.optimizer, self.model, self.lossFunc, trainX, trainY, valiX, valiY)
+        return training_loop(epoch, self.optimizer, self.model, self.lossFunc, trainX, trainY, valiX, valiY)
 
     def predict(self, X):
         """Predicts the label with this model.

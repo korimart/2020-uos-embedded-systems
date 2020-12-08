@@ -6,20 +6,18 @@ class HumanModel:
         self.memory = []
 
     def predict(self, X):
+        # cv2.imshow("Data View", cv2.resize(X.reshape(16, 16), dsize=(280, 280)))
         key = cv2.waitKey(0)
         category = None
 
         if key == ord("w"):
             category = 0
-            category = np.array([1, 0, 0])
 
         elif key == ord("a"):
             category = 1
-            category = np.array([0, 1, 0])
 
         elif key == ord("d"):
             category = 2
-            category = np.array([0, 0, 1])
 
         elif key == ord("o"):
             print("saved memory to file")
@@ -30,8 +28,9 @@ class HumanModel:
             print("cleared memory")
             self.memory = []
 
-        if category:
+        if category is not None:
             self.memory.append([category, X])
+            print(category)
 
             if category == 0:
                 category = np.array([1, 0, 0])
@@ -41,5 +40,6 @@ class HumanModel:
 
             elif category == 2:
                 category = np.array([0, 0, 1])
+
 
         return category

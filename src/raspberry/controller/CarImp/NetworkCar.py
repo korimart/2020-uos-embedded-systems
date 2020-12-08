@@ -26,3 +26,6 @@ class NetworkCar(Car):
     def get_image_from_camera(self):
         self.clientsocket.send("C0".encode("ascii"))
         return np.frombuffer(self.clientsocket.recv(1000), dtype="uint8").reshape(16, 16)
+
+    def close(self):
+        self.clientsocket.close()

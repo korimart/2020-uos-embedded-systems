@@ -20,12 +20,15 @@ if __name__ == "__main__":
     # testX, testY = dataLoader.getTestData()
 
     # no validation set for now
-    model.train(50, trainX, trainY, trainX, trainY)
+    log = model.train(1000, trainX, trainY, trainX, trainY)
+    print(log)
+
     model.save("trained-model.p")
 
-    prediction = model.predict(trainX[0])
-    prediction = np.around(prediction)
+    for i, X in enumerate(trainX):
+        pred = model.predict(X)
+        label = trainY[i]
+        print("[{}] prediction {} label {}".format(i, pred, label))
 
-    label = trainY[0]
-
-    print("prediction {} label {}".format(prediction, label))
+        if i > 10:
+            break

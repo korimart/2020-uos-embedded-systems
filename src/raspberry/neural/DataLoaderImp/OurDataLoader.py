@@ -19,13 +19,13 @@ class OurDataLoader(DataLoader):
 
     @staticmethod
     def _separateDataLabel(loadedData):
-        X = np.array([np.reshape(serialized[2], serialized[2].shape[0] ** 2) for serialized in loadedData], dtype=np.float32)
-        Y = np.zeros((len(loadedData), 2), dtype=np.float32)
+        X = np.array([serialized[1] for serialized in loadedData], dtype=np.float32)
+        Y = np.zeros(len(loadedData), dtype=np.int)
 
         for i, data in enumerate(loadedData):
-            Y[i] = float(data[0])
+            Y[i] = int(data[0])
 
-        b = np.zeros((Y.size, Y.max()+1))
+        b = np.zeros((Y.size, Y.max() + 1))
         b[np.arange(Y.size),Y] = 1
 
         return X, b
