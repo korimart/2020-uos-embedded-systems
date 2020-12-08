@@ -18,7 +18,7 @@ model = HumanModel()
 while True:
     cv2.imshow("Data View", cv2.resize(img, dsize=(280, 280)))
     img = np.array([np.reshape(img, img.shape[0] ** 2)], dtype=np.float32)
-    category = model.predict(img)
+    category = np.argmax(model.predict(img))
 
     if category == 0:
         controller.goStraight()

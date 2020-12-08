@@ -10,13 +10,13 @@ class HumanModel:
         category = None
 
         if key == ord("w"):
-            category = 0
+            category = np.array([1, 0, 0])
 
         elif key == ord("a"):
-            category = 1
+            category = np.array([0, 1, 0])
 
         elif key == ord("d"):
-            category = 2
+            category = np.array([0, 0, 1])
 
         elif key == ord("o"):
             print("saved memory to file")

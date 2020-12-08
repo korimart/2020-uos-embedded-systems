@@ -15,7 +15,6 @@ class RotationalController:
         time.sleep(0.5)
         self.car.set_left_speed(0)
         self.car.set_right_speed(0)
-        
     
     def stop(self):
         self.car.set_left_speed(0)
