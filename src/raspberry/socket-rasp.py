@@ -1,6 +1,6 @@
 import socket
-from .controller.CarImp.RealCar import RealCar
-from .controller.CarCameraImp import RealCamera
+from controller.CarImp.RealCar import RealCar
+from controller.CarCameraImp.RealCamera import RealCamera
 
 car = RealCar(RealCamera())
 
@@ -26,12 +26,12 @@ while True:
             car.set_right_speed(2)
             car.set_left_speed(2)
 
-        if recievedBytes == b"L":
+        if receivedBytes == b"L":
             car.set_right_speed(2)
 
-        if recievedBytes == b"R":
+        if receivedBytes == b"R":
             car.set_right_speed(2)
             
-        if recievedBytes == b"S":
+        if receivedBytes == b"S":
             car.set_left_speed(0)
             car.set_right_speed(0)
