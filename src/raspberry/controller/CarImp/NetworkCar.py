@@ -3,13 +3,13 @@ import socket
 import numpy as np
 
 class NetworkCar(Car):
-    def __init__(self, carCamera=None, myIp="192.168.137.1"):
+    def __init__(self, carCamera=None, myIp="192.168.137.1", port=8080):
         super().__init__(carCamera)
 
         # create an INET, STREAMing socket
         serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         # bind the socket to a public host, and a well-known port
-        serversocket.bind((myIp, 9998))
+        serversocket.bind((myIp, port))
         # become a server socket
         print("listening...")
         serversocket.listen(5)

@@ -10,7 +10,9 @@ def initSocket():
     while True:
         try:
             print("connecting")
+            s.settimeout(3)
             s.connect(("192.168.137.1", 8080))
+            s.settimeout(None)
             break
         except:
             pass
