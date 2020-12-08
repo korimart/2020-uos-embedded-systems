@@ -25,4 +25,4 @@ class NetworkCar(Car):
 
     def get_image_from_camera(self):
         self.clientsocket.send(b"C")
-        return np.frombuffer(self.clientsocket.recv(1000), dtype=np.int)
+        return np.frombuffer(self.clientsocket.recv(1000), dtype="uint8")

@@ -1,6 +1,6 @@
 import socket
-from .controller.CarImp.RealCar import RealCar
-from .controller.CarCameraImp import RealCamera
+from controller.CarImp.RealCar import RealCar
+from controller.CarCameraImp import RealCamera
 
 car = RealCar(RealCamera())
 
