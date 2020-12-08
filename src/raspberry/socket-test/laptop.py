@@ -1,14 +1,13 @@
-import socket
+from ..controller.CarImp.NetworkCar import NetworkCar
 
-# create an INET, STREAMing socket
-serversocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-# bind the socket to a public host, and a well-known port
-serversocket.bind(("192.168.137.1", 8080))
-# become a server socket
-serversocket.listen(5)
+car = NetworkCar()
 
 while True:
-    # accept connections from outside
-    (clientsocket, address) = serversocket.accept()
-    print(address)
-    clientsocket.send(b"you are connected")
+    command = input("command: ")
+
+    if command == "R":
+        car.set_right_speed(2)
+
+    if command == "C":
+        img = car.get_image_from_camera()
+        print(img)
