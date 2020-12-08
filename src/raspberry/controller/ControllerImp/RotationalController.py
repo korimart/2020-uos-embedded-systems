@@ -12,7 +12,7 @@ class RotationalController:
         self.rightRolling= True
         self.car.set_left_speed(2)
         self.car.set_right_speed(2)
-        time.sleep(0.5)
+        time.sleep(0.25)
         self.car.set_left_speed(0)
         self.car.set_right_speed(0)
     
@@ -23,15 +23,13 @@ class RotationalController:
     def goLeft(self, speed):
         self.car.set_left_speed(0)
         self.car.set_right_speed(speed)
-        time.sleep(0.5)
+        time.sleep(0.25)
         self.car.set_right_speed(0)
         self.car.set_left_speed(0)
    
-        
     def goRight(self, speed):
-        
         self.car.set_left_speed(speed)
         self.car.set_right_speed(0)
-        time.sleep(0.5)
+        time.sleep(0.25)
         self.car.set_left_speed(0)
         self.car.set_right_speed(0)        

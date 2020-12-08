@@ -1,6 +1,5 @@
 from neural.ModelImp.HumanModel import HumanModel
 from neural.ModelImp.OurModel import OurModel
-from controller.ControllerImp.NeuralController import NeuralController
 from controller.CarImp.NetworkCar import NetworkCar
 from controller.ControllerImp.RotationalController import RotationalController
 import cv2
