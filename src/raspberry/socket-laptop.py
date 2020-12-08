@@ -42,4 +42,5 @@ try:
         print(category)
 
 except KeyboardInterrupt:
-    pass
+    print("closing")
+    car.close()
