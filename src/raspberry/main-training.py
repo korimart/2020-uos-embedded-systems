@@ -13,7 +13,7 @@ if __name__ == "__main__":
     # dataLoader = GivenDataLoader("trainingdata.p")
     # model = GivenModel()
     model = OurModel()
-    dataLoader = OurDataLoader("our-data.npy")
+    dataLoader = OurDataLoader("our-data.npy", ratio=1) # no test set
 
     # start of logic
     trainX, trainY = dataLoader.getTrainingData()

@@ -6,7 +6,7 @@ class OurDataLoader(DataLoader):
     ''' TODO
     '''
 
-    def __init__(self, path, seed=0) -> None:
+    def __init__(self, path, seed=0, ratio=3) -> None:
         np.random.seed(seed)
 
         # original data
@@ -15,7 +15,7 @@ class OurDataLoader(DataLoader):
         # shuffled data
         data = np.load(path, allow_pickle=True)
         imageCount = len(data)
-        self.test, self.train = data[0:int(imageCount / 3)], data[int(imageCount / 3):]
+        self.test, self.train = data[0:int(imageCount / ratio)], data[int(imageCount / ratio):]
 
     @staticmethod
     def _separateDataLabel(loadedData):
