@@ -50,5 +50,9 @@ while True:
                 car.set_left_speed(0)
                 car.set_right_speed(0)
 
+        else:
+            raise ConnectionResetError()
+
     except ConnectionResetError:
+        s.close()
         s = initSocket()
