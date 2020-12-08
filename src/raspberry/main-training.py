@@ -17,7 +17,7 @@ if __name__ == "__main__":
 
     # start of logic
     trainX, trainY = dataLoader.getTrainingData()
-    testX, testY = dataLoader.getTestData()
+    # testX, testY = dataLoader.getTestData()
 
     # no validation set for now
     model.train(50, trainX, trainY, trainX, trainY)

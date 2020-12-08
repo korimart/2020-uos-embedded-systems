@@ -15,7 +15,7 @@ class OurDataLoader(DataLoader):
         # shuffled data
         data = np.load(path, allow_pickle=True)
         imageCount = len(data)
-        self.test, self.train = data[0:int(imageCount / ratio)], data[int(imageCount / ratio):]
+        self.train, self.test = data[0:int(imageCount / ratio)], data[int(imageCount / ratio):]
 
     @staticmethod
     def _separateDataLabel(loadedData):
@@ -25,10 +25,10 @@ class OurDataLoader(DataLoader):
         for i, data in enumerate(loadedData):
             Y[i] = float(data[0])
 
-        Y = np.zeros((Y.size, Y.max() + 1))
-        Y[np.arange(Y.size), Y] = 1
+        b = np.zeros((Y.size, Y.max()+1))
+        b[np.arange(Y.size),Y] = 1
 
-        return X, Y
+        return X, b
 
     def getTrainingData(self):
         return self._separateDataLabel(self.train)
