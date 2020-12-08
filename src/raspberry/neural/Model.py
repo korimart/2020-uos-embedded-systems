@@ -20,6 +20,7 @@ def training_loop(n_epochs, optimizer, model, lossFunc, trainX, trainY, valiX, v
         optimizer.step()
 
         log.append("Epoch {} Train Loss {} Validation Loss {}".format(epoch, train_loss, vali_loss))
+        print(epoch)
 
         if not torch.isfinite(train_loss).all():
             break

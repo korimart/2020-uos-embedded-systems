@@ -33,6 +33,8 @@ try:
         elif category == 2:
             controller.goRight(2)
 
+        print(category)
+
         # cv2.destroyAllWindows()
 
 except KeyboardInterrupt:

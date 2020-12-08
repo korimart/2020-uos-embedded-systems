@@ -45,6 +45,8 @@ class OurDataLoader(DataLoader):
             image = data[1]
             image = image.reshape(16, 16)
 
+            print("[{}]".format(i))
+
             cv2.imshow("Data View", cv2.resize(image, dsize=(280,280)))
             cv2.waitKey(0)
 

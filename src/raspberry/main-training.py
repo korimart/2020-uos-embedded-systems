@@ -24,19 +24,22 @@ if __name__ == "__main__":
     # dataLoader = GivenDataLoader("trainingdata.p")
     # model = GivenModel()
     model = OurModel()
-    model.load("trained-model2.p")
+    # model.load("trained-model2.p")
     dataLoader = OurDataLoader("our-data.npy", ratio=1) # no test set
     dataLoader2 = OurDataLoader("our-data2.npy", ratio=1) # no test set
+    dataLoader3 = OurDataLoader("our-data-R90.npy", ratio=1)
 
     # start of logic
     trainX, trainY = dataLoader.getTrainingData()
     trainX2, trainY2 = dataLoader2.getTrainingData()
-    # testX, testY = dataLoader.getTestData()
+    trainX3, trainY3 = dataLoader3.getTrainingData()
 
-    # combinedX = combineData([trainX, trainX2])
-    # combinedY = combineData([trainY, trainY2])
-    combinedX = combineData([trainX2])
-    combinedY = combineData([trainY2])
+    combinedX = combineData([trainX2, trainX])
+    combinedY = combineData([trainY2, trainY])
+    # combinedX = combineData([trainX, trainX2, trainX3])
+    # combinedY = combineData([trainY, trainY2, trainY3])
+    # combinedX = combineData([trainX2])
+    # combinedY = combineData([trainY2])
 
     # no validation set for now
     log = model.train(1000, combinedX, combinedY, combinedX, combinedY)
