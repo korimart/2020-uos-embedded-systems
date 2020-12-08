@@ -11,3 +11,4 @@ while True:
     # accept connections from outside
     (clientsocket, address) = serversocket.accept()
     print(address)
+    clientsocket.send(b"you are connected")
