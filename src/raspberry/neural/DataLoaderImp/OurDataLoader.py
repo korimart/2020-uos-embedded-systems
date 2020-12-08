@@ -14,6 +14,7 @@ class OurDataLoader(DataLoader):
 
         # shuffled data
         data = np.load(path, allow_pickle=True)
+        # np.random.shuffle(data)
         imageCount = len(data)
         self.train, self.test = data[0:int(imageCount / ratio)], data[int(imageCount / ratio):]
 
@@ -42,8 +43,9 @@ class OurDataLoader(DataLoader):
         for i, data in enumerate(self.data):
             category = data[0]
             image = data[1]
+            image = image.reshape(16, 16)
 
-            cv2.imshow("Data View", np.array(cv2.resize(image,(280,280))))
+            cv2.imshow("Data View", cv2.resize(image, dsize=(280,280)))
             cv2.waitKey(0)
 
         cv2.destroyAllWindows()

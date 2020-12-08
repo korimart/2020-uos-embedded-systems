@@ -1,6 +1,6 @@
 from neural.DataLoaderImp.OurDataLoader import OurDataLoader
 
-loader = OurDataLoader("our-data.npy")
+loader = OurDataLoader("our-data2.npy")
 loader.showDataAsCv2Window()
 # X, Y = loader.getTrainingData()
 

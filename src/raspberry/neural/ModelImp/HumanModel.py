@@ -22,7 +22,7 @@ class HumanModel:
         elif key == ord("o"):
             print("saved memory to file")
             toSave = np.array(self.memory)
-            np.save("our-data", toSave)
+            np.save("our-data3", toSave)
 
         elif key == ord("c"):
             print("cleared memory")
