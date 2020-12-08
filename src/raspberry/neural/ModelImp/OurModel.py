@@ -14,8 +14,8 @@ class OurModel(Model):
             nn.ReLU(),
             nn.Linear(512, 64),
             nn.ReLU(),
-            nn.Linear(64, 2),
+            nn.Linear(64, 3),
         )
 
         self.optimizer = optim.Adam(self.model.parameters())
-        self.lossFunc = nn.MSELoss()
+        self.lossFunc = nn.CrossEntropyLoss()

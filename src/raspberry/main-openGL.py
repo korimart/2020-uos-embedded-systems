@@ -2,7 +2,7 @@ from EasyPygame.Components.GameObject import GameObject
 from controller.MainScene import start
 
 from controller.CarImp.SimulatedCar import SimulatedCar
-from controller.ControllerImp.KeyboadController import KeyboardController
+from controller.ControllerImp.RotationalController import RotationalController
 from controller.ControllerImp.NeuralController import NeuralController
 from controller.CarCameraImp.DataCamera import DataCamera
 from neural.DataLoaderImp.GivenDataLoader import GivenDataLoader
@@ -28,7 +28,7 @@ def keyboardSimulation(carGameObject: GameObject):
     the keyboard input."""
 
     car = SimulatedCar(None, carGameObject)
-    controller = KeyboardController(car)
+    controller = RotationalController(car)
 
     return car, controller
 

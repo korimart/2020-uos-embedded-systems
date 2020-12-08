@@ -3,7 +3,7 @@ from neural.ModelImp.OurModel import OurModel
 from controller.CarCameraImp.RealCamera import RealCamera
 from controller.CarImp.RealCar import RealCar
 from controller.CarImp.SimulatedCar import SimulatedCar
-from controller.ControllerImp.KeyboadController import KeyboardController
+from controller.ControllerImp.RotationalController import RotationalController
 from controller.ControllerImp.NeuralController import NeuralController
 from controller.CarCameraImp.DataCamera import DataCamera
 from neural.DataLoaderImp.GivenDataLoader import GivenDataLoader

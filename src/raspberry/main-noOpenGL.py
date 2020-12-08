@@ -1,7 +1,7 @@
 import sys
 import pygame
 from controller.CarImp.RealCar import RealCar
-from controller.ControllerImp.KeyboadController import KeyboardController
+from controller.ControllerImp.RotationalController import RotationalController
 from controller.CarCameraImp.RealCamera import RealCamera
 
 class Window:
@@ -15,7 +15,7 @@ class Window:
         pygame.display.set_caption(self.caption)
 
         self.car = RealCar(RealCamera())
-        self.controller = KeyboardController(self.car)
+        self.controller = RotationalController(self.car)
 
     def run(self):
         fpsClock = pygame.time.Clock()

@@ -23,8 +23,10 @@ class OurDataLoader(DataLoader):
         Y = np.zeros((len(loadedData), 2), dtype=np.float32)
 
         for i, data in enumerate(loadedData):
-            Y[i, 0] = float(data[0])
-            Y[i, 1] = float(data[1])
+            Y[i] = float(data[0])
+
+        Y = np.zeros((Y.size, Y.max() + 1))
+        Y[np.arange(Y.size), Y] = 1
 
         return X, Y
 
@@ -38,11 +40,9 @@ class OurDataLoader(DataLoader):
         cv2.namedWindow('Data View')
 
         for i, data in enumerate(self.data):
-            left = data[0]
-            right = data[1]
-            image = data[2]
+            category = data[0]
+            image = data[1]
 
-            print("[{}] {} {}".format(i, left, right))
             cv2.imshow("Data View", np.array(cv2.resize(image,(280,280))))
             cv2.waitKey(0)
 

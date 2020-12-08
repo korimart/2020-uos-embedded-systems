@@ -1,18 +1,33 @@
+from neural.ModelImp.HumanModel import HumanModel
+from neural.ModelImp.OurModel import OurModel
+from controller.ControllerImp.NeuralController import NeuralController
 from controller.CarImp.NetworkCar import NetworkCar
+from controller.ControllerImp.RotationalController import RotationalController
 import cv2
 import numpy as np
 
+img = np.zeros(shape=(280, 280))
+
 car = NetworkCar()
+controller = RotationalController(car)
+model = HumanModel()
+# model = OurModel()
+# model.load("trained-model.p")
+# controller = NeuralController(car, model)
 
 while True:
-    command = input("command: ")
+    cv2.imshow("Data View", cv2.resize(img, dsize=(280, 280)))
+    img = np.array([np.reshape(img, img.shape[0] ** 2)], dtype=np.float32)
+    category = model.predict(img)
 
-    if command == "R":
-        car.set_right_speed(2)
+    if category == 0:
+        controller.goStraight()
 
-    if command == "C":
-        img = car.get_image_from_camera()
-        img = img.reshape(16, 16)
-        cv2.imshow("Data View", np.array(cv2.resize(img,(280,280))))
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    elif category == 1:
+        controller.goLeft(2)
+
+    elif category == 2:
+        controller.goRight(2)
+
+    img = car.get_image_from_camera()
+    cv2.destroyAllWindows()

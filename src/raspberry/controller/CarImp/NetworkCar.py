@@ -18,11 +18,11 @@ class NetworkCar(Car):
         print("{} entered the chat".format(address))
 
     def set_right_speed(self, speed):
-        self.clientsocket.send(b"R")
+        self.clientsocket.send("R{}".format(int(speed)).encode("ascii"))
     
     def set_left_speed(self, speed):
-        self.clientsocket.send(b"L")
+        self.clientsocket.send("L{}".format(int(speed)).encode("ascii"))
 
     def get_image_from_camera(self):
-        self.clientsocket.send(b"C")
-        return np.frombuffer(self.clientsocket.recv(1000), dtype="uint8")
+        self.clientsocket.send("C0".encode("ascii"))
+        return np.frombuffer(self.clientsocket.recv(1000), dtype="uint8").reshape(16, 16)
