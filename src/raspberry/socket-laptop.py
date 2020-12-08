@@ -19,7 +19,7 @@ if modelChoice == 0:
 
 elif modelChoice == 1:
     model = OurModel()
-    model.load("trained-model3.p") 
+    model.load("trained-model-loss-0.05.p") 
 
 try: 
     while True:
