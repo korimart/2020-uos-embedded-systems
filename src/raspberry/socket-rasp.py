@@ -9,6 +9,7 @@ def initSocket():
 
     while True:
         try:
+            print("connecting")
             s.connect(("192.168.137.1", 8080))
             break
         except:
@@ -54,5 +55,6 @@ while True:
             raise Exception()
 
     except:
+        print("closing")
         s.close()
         s = initSocket()
