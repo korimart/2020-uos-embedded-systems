@@ -20,14 +20,14 @@ class RotationalController:
         self.car.set_left_speed(0)
         self.car.set_right_speed(0)
 
-    def goLeft(self, speed):
+    def rotateLeft(self, speed):
         self.car.set_left_speed(0)
         self.car.set_right_speed(speed)
         time.sleep(0.1)
         self.car.set_right_speed(0)
         self.car.set_left_speed(0)
    
-    def goRight(self, speed):
+    def rotateRight(self, speed):
         self.car.set_left_speed(speed)
         self.car.set_right_speed(0)
         time.sleep(0.1)

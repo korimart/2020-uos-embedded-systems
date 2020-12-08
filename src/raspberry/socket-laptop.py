@@ -28,10 +28,10 @@ try:
             controller.goStraight()
 
         elif category == 1:
-            controller.goLeft(2)
+            controller.rotateLeft(2)
 
         elif category == 2:
-            controller.goRight(2)
+            controller.rotateRight(2)
 
         print(category)
 
