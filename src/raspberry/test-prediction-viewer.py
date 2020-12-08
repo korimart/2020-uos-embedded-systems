@@ -16,7 +16,7 @@ dataX, dataY = loader.getTrainingData()
 cv2.namedWindow('Data View')
 
 for i, data in enumerate(dataX):
-    image = data.reshape(16, 16)
+    image = data.astype("uint8").reshape(16, 16)
     category = np.argmax(model.predict(data))
 
     print("[{}]\n\thuman: {}\n\tmachine: {}".format(i, categoryLabel[np.argmax(dataY[i])], categoryLabel[category]))
