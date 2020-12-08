@@ -8,19 +8,25 @@ from controller.ControllerImp.RotationalController import RotationalController
 import numpy as np
 import cv2
 
-# camera = DataCamera(OurDataLoader("trainingdata.p"))
 car = NetworkCar()
 controller = RotationalController(car)
-# model = HumanModel()
-model = OurModel()
-model.load("trained-model3.p") 
+model = None
+
+modelChoice = int(input("0: human\n1: machine\n"))
+
+if modelChoice == 0:
+    model = HumanModel()
+
+elif modelChoice == 1:
+    model = OurModel()
+    model.load("trained-model3.p") 
 
 try: 
     while True:
+        # 16 by 16 uint8 numpy array
         img = car.get_image_from_camera() 
-        # cv2.imshow("Data View", cv2.resize(img, dsize=(280, 280)))
-        # print(img)
 
+        # flatten 16 by 16 image and convert it to float to feed to model
         img = np.array([np.reshape(img, img.shape[0] ** 2)], dtype=np.float32)
         category = np.argmax(model.predict(img))
 
@@ -34,8 +40,6 @@ try:
             controller.rotateRight(2)
 
         print(category)
-
-        # cv2.destroyAllWindows()
 
 except KeyboardInterrupt:
     pass

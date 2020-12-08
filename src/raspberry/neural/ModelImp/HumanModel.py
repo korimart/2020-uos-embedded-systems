@@ -6,8 +6,10 @@ class HumanModel:
         self.memory = []
 
     def predict(self, X):
-        # cv2.imshow("Data View", cv2.resize(X.reshape(16, 16), dsize=(280, 280)))
+        cv2.imshow("Data View", cv2.resize(X.astype("uint8").reshape(16, 16), dsize=(280, 280)))
         key = cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
         category = None
 
         if key == ord("w"):
