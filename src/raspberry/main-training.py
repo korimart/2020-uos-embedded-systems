@@ -34,8 +34,8 @@ if __name__ == "__main__":
     trainX2, trainY2 = dataLoader2.getTrainingData()
     trainX3, trainY3 = dataLoader3.getTrainingData()
 
-    combinedX = combineData([trainX2, trainX])
-    combinedY = combineData([trainY2, trainY])
+    combinedX = combineData([trainX2, trainX, trainX3, trainX3, trainX3])
+    combinedY = combineData([trainY2, trainY, trainY3, trainY3, trainY3])
     # combinedX = combineData([trainX, trainX2, trainX3])
     # combinedY = combineData([trainY, trainY2, trainY3])
     # combinedX = combineData([trainX2])

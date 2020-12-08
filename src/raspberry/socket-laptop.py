@@ -13,7 +13,7 @@ car = NetworkCar()
 controller = RotationalController(car)
 # model = HumanModel()
 model = OurModel()
-model.load("trained-model2.p") 
+model.load("trained-model3.p") 
 
 try: 
     while True:

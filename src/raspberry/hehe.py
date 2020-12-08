@@ -1,9 +1,16 @@
 from neural.DataLoaderImp.OurDataLoader import OurDataLoader
+from neural.ModelImp.OurModel import OurModel
 import numpy as np
 
-loader = OurDataLoader("our-data.npy")
-# data = loader.data[18:64]
-# np.save("our-data-R90", data)
+loader = OurDataLoader("our-data-R90.npy")
+model = OurModel()
+model.load("trained-model3.p") 
+
+dataX, dataY = loader.getTrainingData()
+
+for i, X in enumerate(dataX):
+    category = np.argmax(model.predict(X))
+    print("[{}] {}".format(i, category))
 
 
 loader.showDataAsCv2Window()
