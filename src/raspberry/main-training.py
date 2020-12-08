@@ -45,7 +45,7 @@ if __name__ == "__main__":
     log = model.train(1000, combinedX, combinedY, combinedX, combinedY)
     print(log)
 
-    model.save("trained-model3.p")
+    model.save("trained-model-temp.p")
 
     # for i, X in enumerate(trainX):
     #     pred = model.predict(X)
