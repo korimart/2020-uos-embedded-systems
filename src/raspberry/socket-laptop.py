@@ -1,4 +1,4 @@
-from ..controller.CarImp.NetworkCar import NetworkCar
+from .controller.CarImp.NetworkCar import NetworkCar
 
 car = NetworkCar()
 
