@@ -15,6 +15,8 @@ def initSocket():
             s.connect(("192.168.137.1", 8080))
             s.settimeout(None)
             break
+        except KeyboardInterrupt:
+            return -1
         except:
             pass
 
@@ -64,7 +66,11 @@ while True:
         else:
             raise Exception()
 
+    except KeyboardInterrupt:
+        break
     except:
         print("closing")
         s.close()
         s = initSocket()
+        if s == -1:
+            break
