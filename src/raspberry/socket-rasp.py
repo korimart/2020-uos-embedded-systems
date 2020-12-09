@@ -1,6 +1,7 @@
 import socket
 from controller.CarImp.RealCar import RealCar
 from controller.CarCameraImp.RealCamera import RealCamera
+from time import sleep
 
 def initSocket():
     # create an INET, STREAMing socket
@@ -39,15 +40,22 @@ while True:
             if receivedBytes[0] == "F":
                 car.set_right_speed(2)
                 car.set_left_speed(2)
+                sleep(0.1)
+                car.set_right_speed(0)
+                car.set_left_speed(0)
 
             if receivedBytes[0] == "L":
                 speed=int(receivedBytes[1])
                 
                 car.set_left_speed(speed)
+                sleep(0.1)
+                car.set_left_speed(0)
 
             if receivedBytes[0] == "R":
                 speed=int(receivedBytes[1])
                 car.set_right_speed(speed)
+                sleep(0.1)
+                car.set_right_speed(0)
                 
             if receivedBytes[0] == "S":
                 car.set_left_speed(0)
