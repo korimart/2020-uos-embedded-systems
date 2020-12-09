@@ -1,42 +1,39 @@
 # 2020 임베디드 시스템 및 설계
 
-## Clone
-
-```
-git clone --recurse-submodules url
-```
-
 ## Dependencies
 
-```python
-pip install pygame pyglm pympler
-```
+https://pytorch.org/get-started/locally/ 에 접속하여 본인의 플랫폼에 맞는 방법으로 pytorch 설치.
 
-이후 https://pytorch.org/get-started/locally/ 에 접속하여 pytorch 설치
-
-### Windows
-
-https://www.lfd.uci.edu/~gohlke/pythonlibs/ 에 접속하여 pyopengl을 찾은 후 파이썬 버전을 확인하여 (python 3.8이면 cp38 선택) PyOpenGL과 PyOpenGL_accerlate 둘다 설치
-
-### Linux
+아래도 설치.
 
 ```
-pip install pyopengl pyopengl_accelerate
+pip install opencv-python
 ```
-
-(not tested)
 
 ## 실행
 
+실행 전 본인의 아이피 주소를 코드에 입력해야 함.
+
 ```
 cd src/raspberry
-python main-control.py
+
+# PC에서 (NetworkCar에 아이피 주소 입력 필수)
+python socket-laptop.py
+
+# 라즈베리파이에서 (connect 함수에 아이피 주소 입력 필수)
+python3 socket-rasp.py
+
+# PC에서 학습하기 위한 스크립트
+python main-training.py
+
+# PC에서 학습 결과를 확인하기 위한 스크립트
+python test-prediction-viewer.py
+
 ```
 
 ## 조작법
 
-```
-wasd - 카메라 상하좌우 이동
-[] - 카메라 앞뒤로 이동
-```
+socket-laptop.py 를 실행하면 0을 입력해 데이터수집 가능.
+
+w a d 로 움직이며 c 를 누르면 버퍼 클리어, o를 누르면 데이터를 파일로 저장.
 
